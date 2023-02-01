@@ -4,6 +4,7 @@
  */
 package tp04.metier;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -13,11 +14,17 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class ActionSimpleTest {
     
+    private static final String EXPECTED_LIB="Toto";
+    
     public ActionSimpleTest() {
     }
 
-    @org.junit.jupiter.api.Test
-    public void testSomeMethod() {
+    @Test
+    public void testgetLibShouldPass() {
+        final ActionSimple as1=new ActionSimple("Toto");
+        final String result=as1.getLibelle();
+        
+        Assertions.assertSame(EXPECTED_LIB, result, "Should be the same");
     }
     
 }
