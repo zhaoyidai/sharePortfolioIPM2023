@@ -145,4 +145,26 @@ public class PortefeuilleTest {
         Assertions.assertEquals(p.toStringDetail(), result, "Should be the toString");
     }
     
+    @Test
+    public void testAcheter(){
+        
+        ActionSimple bnp;
+        
+        bnp = new ActionSimple("BNP");
+        
+        
+        Portefeuille p;
+        p = new Portefeuille();
+        p.acheter(bnp, 20);
+        
+        Assertions.assertEquals(20, p.getActions().get(bnp), "Should be the toString");
+        
+        
+        
+        
+        
+        
+        
+    }
+    
 }

@@ -39,6 +39,7 @@ public class Portefeuille {
             this.qte = qte;
         }
 
+        @Override
         public String toString() {
             return Integer.toString(qte);
         }
@@ -46,6 +47,10 @@ public class Portefeuille {
     
     public Portefeuille() {
         this.mapLignes = new LinkedHashMap();
+    }
+    
+    public LinkedHashMap<Action, LignePortefeuille> getActions(){
+        return this.mapLignes;
     }
     
     public void acheter(Action a, int q) {
@@ -65,6 +70,7 @@ public class Portefeuille {
             }
         }        
     }
+    
     
     public String toString() {
         String res = "*----------- Liste des actions avec la quantité associé -----------* \n";
