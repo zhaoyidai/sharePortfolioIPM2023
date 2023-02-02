@@ -25,7 +25,7 @@ public class ActionSimpleTest {
     }
 
     @Test
-    public void testSetActionComposee() {
+    void testSetActionComposee() {
         final ActionSimple as1 = new ActionSimple("Toto");
         final ActionComposee acc = new ActionComposee("Tata");
         as1.setActionComp(acc);
@@ -35,7 +35,7 @@ public class ActionSimpleTest {
     }
 
     @Test
-    public void testEqualsJourDonneActionSimple() {
+    void testEqualsJourDonneActionSimple() {
         //Attributs à tester
         final Jour j1 = new Jour(2022, 20);
         final float v1 = 0F;
@@ -53,7 +53,7 @@ public class ActionSimpleTest {
     }
 
     @Test
-    public void testNotEqualsJourDonneActionSimple() {
+    void testNotEqualsJourDonneActionSimple() {
         //Attributs à tester
         final Jour j1 = new Jour(2022, 20);
         final float v1 = 1F;
@@ -71,7 +71,7 @@ public class ActionSimpleTest {
     }
     
     @Test
-    public void testEqualsEnregistrerCoursActionSimple() {
+    void testEqualsEnregistrerCoursActionSimple() {
         //Attributs à tester
         final Jour j1 = new Jour(2022, 20);
         final float v1 = 1F;
@@ -90,7 +90,7 @@ public class ActionSimpleTest {
     }
     
     @Test
-    public void testNotEqualsEnregistrerCoursActionSimple() {
+    void testNotEqualsEnregistrerCoursActionSimple() {
         //Attributs à tester
         final Jour j1 = new Jour(2022, 20);
         final float v1 = 1F;
