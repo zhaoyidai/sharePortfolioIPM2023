@@ -32,6 +32,10 @@ public class ActionSimple extends Action {
             this.mapCours.put(j, new Cours(j, v));
     }
     
+    public Map<Jour, Cours> getMap(){
+        return this.mapCours;
+    }
+    
 
     public ActionComposee getActionComp() {
         return actionComp;
