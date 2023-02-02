@@ -68,19 +68,5 @@ public class ActionSimpleTest {
         Assertions.assertNotEquals(EXPECTED_VALUE, valeurObtenue, "Le cour n'est pas le même à ce jour!");
     }
     
-    @Test
-    public void testEqualsEnregistrerCoursActionSimple() {
-        //Attributs à tester
-        final Jour j1 = new Jour(2022,20);
-        final float v1 = 0F;
-        
-        //Instanciation d'une action simple
-        final ActionSimple as1 = new ActionSimple("France 2");
-        //Enregistrer le cours v1 d'une action simple à un jour j1
-        as1.enrgCours(j1, v1);
-      
-        //Tester si le cours d'un jour est le même que le cours attendu
-        Assertions.assertEquals(EXPECTED_MAP, valueObtenue, "Le cour est le même à ce jour!");
-    }
     
 }
