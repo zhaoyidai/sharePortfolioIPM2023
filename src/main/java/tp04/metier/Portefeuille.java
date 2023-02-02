@@ -7,8 +7,12 @@ package tp04.metier;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+
 import java.util.List;
 import java.util.Map;
+
+import java.util.LinkedHashMap;
+
 
 /**
  *
@@ -16,9 +20,13 @@ import java.util.Map;
  */
 public class Portefeuille {
     
-    Map<Action, LignePortefeuille> mapLignes;
+
     List<Action> listeAchete=new ArrayList<Action>();
     List<Action> listeVente=new ArrayList<Action>();
+
+    LinkedHashMap<Action, LignePortefeuille> mapLignes;
+    
+
     private class LignePortefeuille {
         
         private Action action;
@@ -48,7 +56,7 @@ public class Portefeuille {
     }
     
     public Portefeuille() {
-        this.mapLignes = new HashMap();
+        this.mapLignes = new LinkedHashMap();
     }
     
     public void acheter(Action a, int q) {
@@ -73,7 +81,28 @@ public class Portefeuille {
     }
     
     public String toString() {
-        return this.mapLignes.toString();
+        String res = "*----------- Liste des actions avec la quantité associé -----------* \n";
+        for (Action action: this.mapLignes.keySet()){
+            res += "*----------------- Action : ";
+            res += action.getLibelle() + "\n";
+            res += "*-- Quantité : ";
+            res += this.mapLignes.get(action).qte + "\n";
+        }
+        return res;
+    }
+    
+    public String toStringDetail() {
+        String res = "*----------- Liste des actions avec la quantité associé -----------* \n";
+        for (Action action: this.mapLignes.keySet()){
+            res += "*----------------- Action : ";
+            res += action.getLibelle() + "\n";
+            res += "*-- Quantité : ";
+            res += this.mapLignes.get(action).qte + "\n";
+            if ( action instanceof ActionComposee){
+                res += action.toString();
+            } 
+        }
+        return res;
     }
 
     public float valeur(Jour j) {
