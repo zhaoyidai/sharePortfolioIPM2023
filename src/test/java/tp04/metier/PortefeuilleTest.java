@@ -203,17 +203,10 @@ public class PortefeuilleTest {
         p = new Portefeuille();
         p.acheter(bnp, 20);
         
-        Assertions.assertEquals("21",p.getActions().get(bnp).toString(), "Should be the toString");
-        
-        
-      
-        
-        
-        
-        
-        
+        Assertions.assertEquals(20,p.getQte(bnp), "Should be the toString");
         
         
     }
+    
     
 }

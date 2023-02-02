@@ -25,7 +25,7 @@ public class Portefeuille {
 
     LinkedHashMap<Action, LignePortefeuille> mapLignes;
     
-    public class LignePortefeuille {
+    private class LignePortefeuille {
         
         private Action action;
         
@@ -127,6 +127,10 @@ public class Portefeuille {
 
     public List<Action> getListeVente() {
         return listeVente;
+    }
+    
+    public int getQte(Action a){
+        return this.mapLignes.get(a).getQte();
     }
     
 }
