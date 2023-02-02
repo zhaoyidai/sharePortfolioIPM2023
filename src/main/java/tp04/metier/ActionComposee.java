@@ -7,7 +7,7 @@
 package tp04.metier;
 
 import java.util.HashMap;
-import java.util.Map;
+import java.util.LinkedHashMap;
 
 /**
  *
@@ -15,15 +15,26 @@ import java.util.Map;
  */
 public class ActionComposee extends Action {
     // attribut lien
-    Map<ActionSimple, Float> mapPanier;
+    LinkedHashMap<ActionSimple, Float> actions;
 
     public ActionComposee(String libelle) {
         super(libelle);
-        this.mapPanier = new HashMap();
+        this.actions = new LinkedHashMap();
     }
     
     public void enrgComposition(ActionSimple as, float pourcentage) {
-        this.mapPanier.put(as, pourcentage);
+        this.actions.put(as, pourcentage);
+    }
+    
+    public String toString() {
+        String res = "*-- Détail \n";
+        for (Action action: this.actions.keySet()){
+            res += "*----------------- Action : ";
+            res += action.getLibelle() + "\n";
+            res += "*------------ Pourcentage : ";
+            res += this.actions.get(action) + "\n";
+        }
+        return res;
     }
 
     @Override
@@ -31,16 +42,10 @@ public class ActionComposee extends Action {
         float valeur;
         
         valeur = 0;
-        for(ActionSimple as : this.mapPanier.keySet()) {
-            valeur = valeur + (as.valeur(j) * this.mapPanier.get(as));
+        for(ActionSimple as : this.actions.keySet()) {
+            valeur = valeur + (as.valeur(j) * this.actions.get(as));
         }
         
         return valeur;
     }
-    
-     public void test() {
-        
-    }
-    
-    
 }
