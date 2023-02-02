@@ -17,7 +17,7 @@ public class ActionSimple extends Action {
 
     // attribut lien
     private Map<Jour, Cours> mapCours;
-    
+    private ActionComposee actionComp;
     // constructeur
     public ActionSimple(String libelle) {
         // Action simple initialisée comme 1 action
@@ -31,6 +31,17 @@ public class ActionSimple extends Action {
         if(this.mapCours.containsKey(j) == false)
             this.mapCours.put(j, new Cours(j, v));
     }
+    
+
+    public ActionComposee getActionComp() {
+        return actionComp;
+    }
+
+    public void setActionComp(ActionComposee actionComp) {
+        this.actionComp = actionComp;
+    }
+    
+    
     
     @Override
     public float valeur(Jour j) {
