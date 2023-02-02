@@ -58,6 +58,7 @@ public class Run {
         p.vendre(bnp, 50);
         System.out.println("Portefeuille : " + p);
  
+        System.out.println(p.toStringDetail());
     }
 
 }
