@@ -99,5 +99,50 @@ public class PortefeuilleTest {
         Assertions.assertEquals(p.toString(), result, "Should be the toString");
     }
     
+    @Test
+    public void testStringToStringDetail() {
+        ActionSimple bnp, axa;
+        ActionComposee bqAss;
+
+        // creation d'actions simples et composée
+        bnp = new ActionSimple("BNP");
+        axa = new ActionSimple("AXA");
+        bqAss = new ActionComposee("Banque-Assurance");
+        
+        bqAss.enrgComposition(axa, 0.3f);
+        bqAss.enrgComposition(bnp, 0.7f);
+
+        Portefeuille p;
+        p = new Portefeuille();
+        
+        p.acheter(axa, 10);
+        p.acheter(bnp, 20);
+        p.acheter(bqAss, 5);
+            
+        String result = "*----------- Liste des actions avec la quantité associé -----------* \n";
+        result += "*----------------- Action : ";
+        result += axa.getLibelle() + "\n";
+        result += "*-- Quantité : ";
+        result += "10\n";
+        result += "*----------------- Action : ";
+        result += bnp.getLibelle() + "\n";
+        result += "*-- Quantité : ";
+        result += "20\n";
+        result += "*----------------- Action : ";
+        result += bqAss.getLibelle() + "\n";
+        result += "*-- Quantité : ";
+        result += "5\n";
+        result += "*-- Détail \n";
+        result += "*----------------- Action : ";
+        result += axa.getLibelle() + "\n";
+        result += "*------------ Pourcentage : ";
+        result += "0.3\n";
+        result += "*----------------- Action : ";
+        result += bnp.getLibelle() + "\n";
+        result += "*------------ Pourcentage : ";
+        result += "0.7\n";
+        
+        Assertions.assertEquals(p.toStringDetail(), result, "Should be the toString");
+    }
     
 }

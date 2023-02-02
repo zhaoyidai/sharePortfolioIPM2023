@@ -7,8 +7,7 @@
 package tp04.metier;
 
 import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.LinkedHashMap;
 
 /**
  *
@@ -16,11 +15,11 @@ import java.util.Set;
  */
 public class ActionComposee extends Action {
     // attribut lien
-    Map<ActionSimple, Float> actions;
+    LinkedHashMap<ActionSimple, Float> actions;
 
     public ActionComposee(String libelle) {
         super(libelle);
-        this.actions = new HashMap();
+        this.actions = new LinkedHashMap();
     }
     
     public void enrgComposition(ActionSimple as, float pourcentage) {

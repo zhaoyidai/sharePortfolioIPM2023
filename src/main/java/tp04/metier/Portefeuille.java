@@ -84,8 +84,8 @@ public class Portefeuille {
             res += action.getLibelle() + "\n";
             res += "*-- Quantité : ";
             res += this.mapLignes.get(action).qte + "\n";
-            if ( action.getClass().getSimpleName() == "ActionComposee"){
-                res += "test";
+            if ( action instanceof ActionComposee){
+                res += action.toString();
             } 
         }
         return res;
