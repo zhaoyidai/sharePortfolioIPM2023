@@ -17,7 +17,6 @@ package tp04.metier;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  *
@@ -64,6 +63,40 @@ public class PortefeuilleTest {
         final int result=p.getnbActions();
         
         Assertions.assertSame(3, result, "Should be the same");
+    }
+    
+    @Test
+    public void testStringToString() {
+        ActionSimple bnp, axa;
+        ActionComposee bqAss;
+
+        // creation d'actions simples et composée
+        bnp = new ActionSimple("BNP");
+        axa = new ActionSimple("AXA");
+        bqAss = new ActionComposee("Banque-Assurance");
+
+        Portefeuille p;
+        p = new Portefeuille();
+        
+        p.acheter(axa, 10);
+        p.acheter(bnp, 20);
+        p.acheter(bqAss, 5);
+            
+        String result = "*----------- Liste des actions avec la quantité associé -----------* \n";
+        result += "*----------------- Action : ";
+        result += axa.getLibelle() + "\n";
+        result += "*-- Quantité : ";
+        result += "10\n";
+        result += "*----------------- Action : ";
+        result += bnp.getLibelle() + "\n";
+        result += "*-- Quantité : ";
+        result += "20\n";
+        result += "*----------------- Action : ";
+        result += bqAss.getLibelle() + "\n";
+        result += "*-- Quantité : ";
+        result += "5\n";
+        
+        Assertions.assertEquals(p.toString(), result, "Should be the toString");
     }
     
     
