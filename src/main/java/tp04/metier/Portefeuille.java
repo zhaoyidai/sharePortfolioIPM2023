@@ -5,7 +5,9 @@
  */
 package tp04.metier;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -15,7 +17,8 @@ import java.util.Map;
 public class Portefeuille {
     
     Map<Action, LignePortefeuille> mapLignes;
-    
+    List<Action> listeAchete=new ArrayList<Action>();
+    List<Action> listeVente=new ArrayList<Action>();
     private class LignePortefeuille {
         
         private Action action;
@@ -51,9 +54,11 @@ public class Portefeuille {
     public void acheter(Action a, int q) {
         if (this.mapLignes.containsKey(a) == false) {
             this.mapLignes.put(a, new LignePortefeuille(a, q));
+            
         } else {
             this.mapLignes.get(a).setQte(this.mapLignes.get(a).getQte() + q);
         }
+        this.listeAchete.add(a);
     }
 
     public void vendre(Action a, int q) {
@@ -63,6 +68,7 @@ public class Portefeuille {
             } else if (this.mapLignes.get(a).getQte() == q) {
                 this.mapLignes.remove(a);
             }
+            this.listeVente.add(a);
         }        
     }
     
@@ -81,4 +87,13 @@ public class Portefeuille {
     public int getnbActions(){
         return this.mapLignes.size();
     }
+
+    public List<Action> getListeAchete() {
+        return listeAchete;
+    }
+
+    public List<Action> getListeVente() {
+        return listeVente;
+    }
+    
 }
