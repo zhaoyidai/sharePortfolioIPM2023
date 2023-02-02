@@ -28,7 +28,7 @@ public class ActionSimple extends Action {
     
     // enrg possible si pas de cours pour ce jour
     public void enrgCours(Jour j, float v) {
-        if(this.mapCours.containsKey(j) == false)
+        if(!this.mapCours.containsKey(j))
             this.mapCours.put(j, new Cours(j, v));
     }
     
@@ -49,7 +49,7 @@ public class ActionSimple extends Action {
     
     @Override
     public float valeur(Jour j) {
-        if(this.mapCours.containsKey(j) == true)
+        if(this.mapCours.containsKey(j))
             return this.mapCours.get(j).getValeur();
         else 
             return 0; // definition d'une constante possible

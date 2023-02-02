@@ -84,13 +84,13 @@ public class PortefeuilleTest {
     }
     
     @Test
-    public void testNbAction(){
+    void testNbAction(){
         Portefeuille p = this.init();
         final int result=p.getnbActions();
         Assertions.assertSame(EXPECTED_NB, result, "Should be the same");
     }
     @Test
-    public void testListAchat(){
+    void testListAchat(){
         Portefeuille p = this.init();
         ArrayList<String> listA = new ArrayList<String>();
         for(Action a:p.getListeAchete()){
@@ -101,7 +101,7 @@ public class PortefeuilleTest {
     }
     
     @Test
-    public void testListVente(){
+    void testListVente(){
         Portefeuille p = this.init();
         ArrayList<String> listA = new ArrayList<String>();
         for(Action a:p.getListeVente()){
@@ -112,7 +112,7 @@ public class PortefeuilleTest {
     }
     
     @Test
-    public void testStringToString() {
+    void testStringToString() {
         ActionSimple bnp, axa;
         ActionComposee bqAss;
 
@@ -146,7 +146,7 @@ public class PortefeuilleTest {
     }
     
     @Test
-    public void testStringToStringDetail() {
+    void testStringToStringDetail() {
         ActionSimple bnp, axa;
         ActionComposee bqAss;
 
