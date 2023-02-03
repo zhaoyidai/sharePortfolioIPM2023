@@ -41,6 +41,9 @@ public class PortefeuilleTest {
             add("BNP");
         }
     };
+    
+    private static final Float EXPECTED_VALEUR = 25F;
+    
     public PortefeuilleTest() {
     }
 
@@ -226,5 +229,32 @@ public class PortefeuilleTest {
         
     }
     
+    @Test
+    public void testValeurTotale(){
+        
+        //Création des actions simples 
+        ActionSimple bnp;
+        ActionSimple axa;
+        
+        //Instanciation des actions simples
+        bnp = new ActionSimple("BNP");
+        axa = new ActionSimple("AXA");
+        
+        //Création d'un portefeuille
+        Portefeuille p;
+        
+        //Intanciation d'un portefeuille
+        p = new Portefeuille();
+        
+        //Achat d'actions pour des actions simples
+        p.acheter(bnp, 15);
+        p.acheter(axa, 10);
+        
+        //Méthode qui trouve la valeur totale du nombre d'actions d'un portefeuille
+        final float valeurActuelle = p.valeurTotale();
+        
+        Assertions.assertEquals(EXPECTED_VALEUR,valeurActuelle, "Le nombre d'actions dans le portefeuille sont les mêmes");
+        
+    }
     
 }

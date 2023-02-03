@@ -115,6 +115,14 @@ public class Portefeuille {
         return total;
     }
     
+    public float valeurTotale() {
+        float qteTotal = 0;
+        for (LignePortefeuille lp : this.mapLignes.values()) {
+            qteTotal += lp.getQte();
+        }
+        return qteTotal;
+    }
+    
     public int getnbActions(){
         return this.mapLignes.size();
     }
