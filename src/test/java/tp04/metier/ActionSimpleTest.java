@@ -18,7 +18,6 @@ public class ActionSimpleTest {
 
     private static final String EXPECTED_LIB = "Toto";
     private static final float EXPECTED_VALUE = 0F;
-    private static final Map<Jour, Float> EXPECTED_MAP = new HashMap<>();
     private static final String ExPECTED_AC_LIB = "Tata";
 
     public ActionSimpleTest() {
@@ -81,33 +80,16 @@ public class ActionSimpleTest {
         //final Cours c1 = new Cours(j1, v1);
         //Enregistrer le cours v1 d'une action simple à un jour j1
         
-        as1.enrgCours(j1, v1);
-        final float actual = as1.valeur(j1);
-        EXPECTED_MAP.put(j1, v1);
-
-        //Tester si le cours d'un jour n'est pas le même que le cours attendu
-        Assertions.assertEquals(EXPECTED_MAP.get(j1), actual, "Le cour enregistrer est le même !");
-    }
-    
-    @Test
-    public void testNotEqualsEnregistrerCoursActionSimple() {
-        //Attributs à tester
-        final Jour j1 = new Jour(2022, 20);
-        final float v1 = 1F;
-        final float v2 = 2F;
-
-        //Instanciation d'une action simple
-        final ActionSimple as1 = new ActionSimple("France 2");
-        //final Cours c1 = new Cours(j1, v1);
-        //Enregistrer le cours v1 d'une action simple à un jour j1
+        final Map<Jour, ActionSimple.Cours> EXPECTED_MAP = new HashMap<>();
         
         as1.enrgCours(j1, v1);
-        final float actual = as1.valeur(j1);
-        EXPECTED_MAP.put(j1, v2);
-
+        
+        EXPECTED_MAP.put(j1, new ActionSimple.Cours(j1, v1));
+        
         //Tester si le cours d'un jour n'est pas le même que le cours attendu
-        Assertions.assertNotEquals(EXPECTED_MAP.get(j1), actual, "Le cour enregistrer n'est pas le même !");
+        Assertions.assertIterableEquals(EXPECTED_MAP.entrySet(), as1.getMap().entrySet(), "Le cour enregistrer est le même !");
     }
+
     
     
 }
