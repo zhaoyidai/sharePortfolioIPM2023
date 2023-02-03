@@ -61,6 +61,7 @@ import org.junit.jupiter.api.Test;
         }};
     
     private static final Float EXPECTED_VALEUR = 25F;
+    private static final Float EXPECTED_VALEUR_RENDEMENT = 4.27F;
     
     void PortefeuilleTest() {
     }
@@ -296,6 +297,23 @@ import org.junit.jupiter.api.Test;
         Jour j2 = new Jour(2014, 2);
         List<Integer> result=p.getAnalyseNb(j2);
         Assertions.assertEquals(EXPECTED_ANALYSENB,result);
+    }
+    
+    @Test
+    void testRendement(){
+        Portefeuille p = init();
+        
+        Jour j1 = new Jour(2023, 10);
+        Jour j2 = new Jour(2023, 11);
+        Jour j3 = new Jour(2023, 12);
+        
+        ActionSimple as1 = new ActionSimple("France 2");
+        as1.enrgCours(j1, 1.54F);
+        as1.enrgCours(j2, 4.48F);
+        as1.enrgCours(j3, 8.12F);
+        
+        final float valeurActuelle = p.rendement(as1, j1, j3);
+        Assertions.assertEquals(EXPECTED_VALEUR_RENDEMENT, valeurActuelle, "Le rendement est le même !");
     }
     
     

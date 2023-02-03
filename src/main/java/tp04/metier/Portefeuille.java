@@ -5,6 +5,7 @@
  */
 package tp04.metier;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
@@ -198,6 +199,19 @@ public class Portefeuille {
             qteTotal += lp.getQte();
         }
         return qteTotal;
+    }
+    
+    public float arrondirRendement(float rendement) {
+        return (float) (Math.round(rendement * 100f) / 100f);
+    }
+
+    
+    public float rendement(Action action, Jour jourdeb, Jour jourfin){
+        float valeurdeb = action.valeur(jourdeb);
+        float valeurfin = action.valeur(jourfin);
+        
+        float rendement = (valeurfin - valeurdeb) / valeurdeb;
+        return arrondirRendement(rendement);
     }
     
 
