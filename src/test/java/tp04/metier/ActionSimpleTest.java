@@ -21,7 +21,7 @@ class ActionSimpleTest {
     private static final String ExPECTED_AC_LIB = "Tata";
     private static final Map<Jour, ActionSimple.Cours> EXPECTED_MAP = new HashMap<>();
 
-    public ActionSimpleTest() {
+    void ActionSimpleTest() {
     }
 
     @Test

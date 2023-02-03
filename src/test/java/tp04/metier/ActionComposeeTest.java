@@ -19,7 +19,6 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  *
@@ -29,7 +28,7 @@ class ActionComposeeTest {
     
      private static final Map<ActionSimple, Float> EXPECTED_MAP_AC = new LinkedHashMap<>();
     
-    public ActionComposeeTest() {
+    void ActionComposeeTest() {
     }
 
     @Test

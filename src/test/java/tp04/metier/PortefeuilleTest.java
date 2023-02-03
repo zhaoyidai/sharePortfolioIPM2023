@@ -61,7 +61,8 @@ import org.junit.jupiter.api.Test;
         }};
     
     private static final Float EXPECTED_VALEUR = 25F;
-    public PortefeuilleTest() {
+    
+    void PortefeuilleTest() {
     }
 
     
