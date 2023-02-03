@@ -217,6 +217,24 @@ public class PortefeuilleTest {
         
         Assertions.assertEquals(20,p.getQte(bnp), "Should be the toString");
         
+    }
+    
+    @Test
+    public void testVendre(){
+        
+        ActionSimple bnp;
+        
+        bnp = new ActionSimple("BNP");
+        
+        
+        Portefeuille p;
+        p = new Portefeuille();
+        p.acheter(bnp, 20);
+        p.vendre(bnp, 5);
+        
+        Assertions.assertNotEquals(20,p.getQte(bnp), "Should be the toString");
+        Assertions.assertEquals(15,p.getQte(bnp), "Should be the toString");
+        
         
     }
     
