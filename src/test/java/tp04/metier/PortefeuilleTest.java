@@ -294,7 +294,8 @@ import org.junit.jupiter.api.Test;
     void testAnalyseNbAction(){
         Portefeuille p=init();
         Jour j2 = new Jour(2014, 2);
-        Assertions.assertEquals(EXPECTED_ANALYSENB,p.getAnalyseNb(j2));
+        List<Integer> result=p.getAnalyseNb(j2);
+        Assertions.assertEquals(EXPECTED_ANALYSENB,result);
     }
     
     
