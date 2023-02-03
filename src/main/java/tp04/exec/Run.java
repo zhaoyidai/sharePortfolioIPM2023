@@ -57,8 +57,16 @@ public class Run {
         System.out.println("Portefeuille : " + p);
         p.vendre(bnp, 50);
         System.out.println("Portefeuille : " + p);
+
+        
+        System.out.println("Liste acheter : ");
+        for(Action a:p.getListeAchete()){
+            System.out.println(a.getLibelle());
+        }
+
  
         System.out.println(p.toStringDetail());
+
     }
 
 }

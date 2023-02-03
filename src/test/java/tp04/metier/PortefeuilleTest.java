@@ -15,6 +15,8 @@
  */
 package tp04.metier;
 
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -23,12 +25,27 @@ import org.junit.jupiter.api.Test;
  * @author zdai2
  */
 public class PortefeuilleTest {
-    
+    private static final int EXPECTED_NB=2;
+    private static final List EXPECTED_listAchat=new ArrayList<String>(){
+        {
+            add("AXA");
+            add("BNP");
+            add("Banque-Assurance");
+            add("Banque-Assurance");
+        }
+    };
+    private static final List EXPECTED_listVente=new ArrayList<String>(){
+        {
+            add("AXA");
+            add("AXA");
+            add("BNP");
+        }
+    };
     public PortefeuilleTest() {
     }
 
-    @Test
-    public void testNbActions() {
+    
+    public Portefeuille init() {
         ActionSimple bnp, axa;
         ActionComposee bqAss;
         Jour j1, j2;
@@ -54,19 +71,48 @@ public class PortefeuilleTest {
         Portefeuille p;
         p = new Portefeuille();
         p.acheter(axa, 10);
-
         p.acheter(bnp, 20);
         p.acheter(bqAss, 5);
-        
         p.acheter(bqAss, 15);
         
-        final int result=p.getnbActions();
+        p.vendre(axa, 5);
+        p.vendre(axa, 5);
+        p.vendre(axa, 5);
+        p.vendre(bnp, 50);
         
-        Assertions.assertSame(3, result, "Should be the same");
+        return p;
     }
     
     @Test
-    public void testStringToString() {
+    void testNbAction(){
+        Portefeuille p = this.init();
+        final int result=p.getnbActions();
+        Assertions.assertSame(EXPECTED_NB, result, "Should be the same");
+    }
+    @Test
+    void testListAchat(){
+        Portefeuille p = this.init();
+        ArrayList<String> listA = new ArrayList<String>();
+        for(Action a:p.getListeAchete()){
+            listA.add(a.getLibelle());
+        }
+        final List result =listA;
+        Assertions.assertEquals(EXPECTED_listAchat, result, "Should be the same");
+    }
+    
+    @Test
+    void testListVente(){
+        Portefeuille p = this.init();
+        ArrayList<String> listA = new ArrayList<String>();
+        for(Action a:p.getListeVente()){
+            listA.add(a.getLibelle());
+        }
+        final List result =listA;
+        Assertions.assertEquals(EXPECTED_listVente, result, "Should be the same");
+    }
+    
+    @Test
+    void testStringToString() {
         ActionSimple bnp, axa;
         ActionComposee bqAss;
 
@@ -100,7 +146,7 @@ public class PortefeuilleTest {
     }
     
     @Test
-    public void testStringToStringDetail() {
+    void testStringToStringDetail() {
         ActionSimple bnp, axa;
         ActionComposee bqAss;
 
@@ -144,5 +190,41 @@ public class PortefeuilleTest {
         
         Assertions.assertEquals(p.toStringDetail(), result, "Should be the toString");
     }
+    
+    @Test
+    public void testAcheter(){
+        
+        ActionSimple bnp;
+        
+        bnp = new ActionSimple("BNP");
+        
+        
+        Portefeuille p;
+        p = new Portefeuille();
+        p.acheter(bnp, 20);
+        
+        Assertions.assertEquals(20,p.getQte(bnp), "Should be the toString");
+        
+    }
+    
+    @Test
+    public void testVendre(){
+        
+        ActionSimple bnp;
+        
+        bnp = new ActionSimple("BNP");
+        
+        
+        Portefeuille p;
+        p = new Portefeuille();
+        p.acheter(bnp, 20);
+        p.vendre(bnp, 5);
+        
+        Assertions.assertNotEquals(20,p.getQte(bnp), "Should be the toString");
+        Assertions.assertEquals(15,p.getQte(bnp), "Should be the toString");
+        
+        
+    }
+    
     
 }
