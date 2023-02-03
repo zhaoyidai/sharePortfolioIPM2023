@@ -14,11 +14,12 @@ import static org.junit.jupiter.api.Assertions.*;
  *
  * @author zdai2
  */
-public class ActionSimpleTest {
+class ActionSimpleTest {
 
     private static final String EXPECTED_LIB = "Toto";
     private static final float EXPECTED_VALUE = 0F;
     private static final String ExPECTED_AC_LIB = "Tata";
+    private static final Map<Jour, ActionSimple.Cours> EXPECTED_MAP = new HashMap<>();
 
     public ActionSimpleTest() {
     }
@@ -77,17 +78,15 @@ public class ActionSimpleTest {
 
         //Instanciation d'une action simple
         final ActionSimple as1 = new ActionSimple("France 2");
-        //final Cours c1 = new Cours(j1, v1);
-        //Enregistrer le cours v1 d'une action simple à un jour j1
-        
-        final Map<Jour, ActionSimple.Cours> EXPECTED_MAP = new HashMap<>();
-        
+
+        //Enregistrer le cours v1 d'une action simple à un jour j1        
         as1.enrgCours(j1, v1);
         
+        //Enregistrer le cours v1 d'une action simple à un jour j1 dans la HashMap à tester
         EXPECTED_MAP.put(j1, new ActionSimple.Cours(j1, v1));
         
-        //Tester si le cours d'un jour n'est pas le même que le cours attendu
-        Assertions.assertIterableEquals(EXPECTED_MAP.entrySet(), as1.getMap().entrySet(), "Le cour enregistrer est le même !");
+        //Tester si la clé, valeur des map sont les mêmes
+        Assertions.assertIterableEquals(EXPECTED_MAP.entrySet(), as1.getMap().entrySet(), "Les clés, valeurs enregistrer sont les mêmes !");
     }
 
     

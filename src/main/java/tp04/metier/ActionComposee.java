@@ -8,6 +8,7 @@ package tp04.metier;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.Objects;
 
 /**
  *
@@ -48,4 +49,30 @@ public class ActionComposee extends Action {
         
         return valeur;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final ActionComposee other = (ActionComposee) obj;
+        return Objects.equals(this.actions, other.actions);
+    }
+
+    public LinkedHashMap<ActionSimple, Float> getActions() {
+        return actions;
+    }
+    
 }
