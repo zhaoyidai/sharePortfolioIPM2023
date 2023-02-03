@@ -48,6 +48,7 @@ public abstract class Action {
         return Objects.equals(this.libelle, other.libelle);
     }
 
+    @Override
     public String toString() {
         return this.getLibelle();
     }

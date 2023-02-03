@@ -21,7 +21,7 @@ public class ActionComposee extends Action {
 
     public ActionComposee(String libelle) {
         super(libelle);
-        this.actions = new LinkedHashMap<ActionSimple, Float>();
+        this.actions = new LinkedHashMap<>();
     }
     
     public void enrgComposition(ActionSimple as, float pourcentage) {
@@ -30,13 +30,15 @@ public class ActionComposee extends Action {
     
     @Override
     public String toString() {
-        String res = "*-- Détail \n";
+        StringBuilder bld = new StringBuilder();
+        bld.append("*-- Détail \n");
         for (Action action: this.actions.keySet()){
-            res += "*----------------- Action : ";
-            res += action.getLibelle() + "\n";
-            res += "*------------ Pourcentage : ";
-            res += this.actions.get(action) + "\n";
+            bld.append("*----------------- Action : ");
+            bld.append(action.getLibelle() + "\n");
+            bld.append("*------------ Pourcentage : ");
+            bld.append(this.actions.get(action) + "\n");
         }
+        String res = bld.toString();
         return res;
     }
 

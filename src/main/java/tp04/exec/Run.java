@@ -10,8 +10,12 @@ import tp04.metier.ActionComposee;
 import tp04.metier.ActionSimple;
 import tp04.metier.Jour;
 import tp04.metier.Portefeuille;
+import java.util.logging.Logger;
+import java.util.logging.Level;
 
 public class Run {
+
+    private static final Logger LOG = Logger.getLogger(Run.class.getName());
 
     public static void main(String[] args) {
         ActionSimple bnp;
@@ -37,37 +41,37 @@ public class Run {
         bnp.enrgCours(j1, 100);
         bnp.enrgCours(j2, 200);
         // affichage des cours - comme 1 action simple et 1 action
-        System.out.println("Action simple *bnp* à j1 : " + bnp.valeur(j1));
-        System.out.println("Action *Banque-Assurance* à j2 : " + bqAss.valeur(j2));
+        LOG.log(Level.INFO, "Action simple *bnp* à j1 : {0}", bnp.valeur(j1));
+        LOG.log(Level.INFO, "Action *Banque-Assurance* à j2 : {0}",  bqAss.valeur(j2));
 
         Portefeuille p;
         p = new Portefeuille();
         p.acheter(axa, 10);
-        System.out.println("Portefeuille : " + p);
+        LOG.log(Level.INFO, "Portefeuille : {0}", p);
         p.acheter(bnp, 20);
-        System.out.println("Portefeuille : " + p);
+        LOG.log(Level.INFO, "Portefeuille : {0}",  p);
         p.acheter(bqAss, 5);
-        System.out.println("Portefeuille : " + p);
+        LOG.log(Level.INFO, "Portefeuille : {0}", p);
         p.acheter(bqAss, 15);
-        System.out.println("Portefeuille : " + p);
-        System.out.println("Portefeuille à j1 : " + p.valeur(j1));
+        LOG.log(Level.INFO, "Portefeuille : {0}", p);
+        LOG.log(Level.INFO, "Portefeuille à j1 : {0}", p.valeur(j1));
         p.vendre(axa, 5);
-        System.out.println("Portefeuille : " + p);
+        LOG.log(Level.INFO, "Portefeuille : {0}", p);
         p.vendre(axa, 5);
-        System.out.println("Portefeuille : " + p);
+        LOG.log(Level.INFO, "Portefeuille : {0}", p);
         p.vendre(axa, 5);
-        System.out.println("Portefeuille : " + p);
+        LOG.log(Level.INFO, "Portefeuille : {0}", p);
         p.vendre(bnp, 50);
-        System.out.println("Portefeuille : " + p);
+        LOG.log(Level.INFO, "Portefeuille : {0}", p);
 
         
-        System.out.println("Liste acheter : ");
+        LOG.log(Level.INFO, "Liste acheter : ");
         for(Action a:p.getListeAchete()){
-            System.out.println(a.getLibelle());
+            LOG.log(Level.INFO, "message {0}", a.getLibelle());
         }
 
  
-        System.out.println(p.toStringDetail());
+        LOG.log(Level.INFO, "message : {0}", p.toStringDetail());
 
     }
 
