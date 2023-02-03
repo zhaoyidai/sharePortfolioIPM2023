@@ -7,10 +7,11 @@ package tp04.metier;
 
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.Iterator;
+
 
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 
@@ -56,10 +57,10 @@ public class Portefeuille {
     }
     
     public Portefeuille() {
-        this.mapLignes = new LinkedHashMap();
+        this.mapLignes = new LinkedHashMap<Action, LignePortefeuille>();
     }
     
-    public LinkedHashMap<Action, LignePortefeuille> getActions(){
+    public Map<Action, LignePortefeuille> getActions(){
         return this.mapLignes;
     }
     
@@ -88,7 +89,7 @@ public class Portefeuille {
 */    
     public Set<String> getActionAugemente(Jour j){
         System.out.println("Toutes mes actions dont le cours augmente sur le dernier jour");
-        Set<String> listAugmente=new HashSet<String>();
+        Set<String> listAugmente=new HashSet<>();
         int annee=j.getAnnee();
         int ajdj=j.getNoJour();
         if(ajdj!=1){
@@ -102,19 +103,19 @@ public class Portefeuille {
                     listAugmente.add(a.getLibelle());
                 }
               
-            }return listAugmente; 
+            } 
         }else{
             //On ne sait pas le nb de jour total de l'annee dernier
             System.out.println("Désolé, Service en maintenance.");
             
         }
-        return null;
+        return listAugmente;
         
     }
     
     public Set<String> getActionDepasser(Jour j,float c){
         
-        Set<String> listDepasse=new HashSet<String>();
+        Set<String> listDepasse=new HashSet<>();
         
         
         
@@ -169,7 +170,7 @@ public class Portefeuille {
         
         int annee=j.getAnnee();
         //(Index 0)Haute,(Index 1)Baisse,(Index 2)Inchange
-        List<Integer> listNb=new ArrayList();
+        List<Integer> listNb=new ArrayList<Integer> ();
         for(int i=0;i<3;i++){
             listNb.add(0);
         }
@@ -188,9 +189,9 @@ public class Portefeuille {
                     listNb.set(2, listNb.get(2)+1);
                 }
             }
-            return listNb;
+            
         }
-        return null;
+        return listNb;
     }
 
     
@@ -219,7 +220,7 @@ public class Portefeuille {
         return this.mapLignes.get(a).getQte();
     }
 
-    public LinkedHashMap<Action, LignePortefeuille> getMapLignes() {
+    public Map<Action, LignePortefeuille> getMapLignes() {
         return mapLignes;
     }
     
