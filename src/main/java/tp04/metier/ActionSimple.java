@@ -29,8 +29,7 @@ public class ActionSimple extends Action {
     
     // enrg possible si pas de cours pour ce jour
     public void enrgCours(Jour j, float v) {
-        if(!this.mapCours.containsKey(j))
-            this.mapCours.put(j, new Cours(j, v));
+        this.mapCours.computeIfAbsent(j, k -> new Cours(k, 0f)).setValeur(v);
     }
     
     public Map<Jour, Cours> getMap(){
@@ -48,15 +47,10 @@ public class ActionSimple extends Action {
     
     @Override
     public float valeur(Jour j) {
-        return mapCours.computeIfAbsent(j, k -> new Cours(k, 0f)).getValeur();
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 71 * hash + Objects.hashCode(this.mapCours);
-        hash = 71 * hash + Objects.hashCode(this.actionComp);
-        return hash;
+        if(this.mapCours.containsKey(j))
+            return this.mapCours.get(j).getValeur();
+        else 
+            return 0;
     }
 
     @Override
@@ -90,6 +84,14 @@ public class ActionSimple extends Action {
         
         public Jour getJour() {
             return jour;
+        }
+
+        public void setJour(Jour jour) {
+            this.jour = jour;
+        }
+
+        public void setValeur(float valeur) {
+            this.valeur = valeur;
         }
 
         public Cours(Jour jour, float valeur) {
