@@ -6,9 +6,12 @@
 package tp04.metier;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
 
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Set;
 
 
 /**
@@ -80,6 +83,53 @@ public class Portefeuille {
             this.listeVente.add(a);
         }        
     }
+/**
+ * Action qui augemente*
+*/    
+    public Set<String> getActionAugemente(Jour j){
+        System.out.println("Toutes mes actions dont le cours augmente sur le dernier jour");
+        Set<String> listAugmente=new HashSet<String>();
+        int annee=j.getAnnee();
+        int ajdj=j.getNoJour();
+        if(ajdj!=1){
+            int hierj=ajdj-1;
+            Jour hier=new Jour(annee,hierj);
+            for(Action a:this.mapLignes.keySet()){
+
+                System.out.println(a.getLibelle()+" hier :"+a.valeur(hier)+" ajd :"+a.valeur(j));
+                if(a.valeur(j)>a.valeur(hier)){
+                    
+                    listAugmente.add(a.getLibelle());
+                }
+              
+            }return listAugmente; 
+        }else{
+            //On ne sait pas le nb de jour total de l'annee dernier
+            System.out.println("Désolé, Service en maintenance.");
+            
+        }
+        return null;
+        
+    }
+    
+    public Set<String> getActionDepasser(Jour j,float c){
+        
+        Set<String> listDepasse=new HashSet<String>();
+        
+        
+        
+        for(Action a:this.mapLignes.keySet()){
+
+            
+            if(a.valeur(j)>c){
+
+                listDepasse.add(a.getLibelle());
+            }
+
+        }return listDepasse; 
+        
+        
+    }
     
     
     public String toString() {
@@ -129,6 +179,10 @@ public class Portefeuille {
     
     public int getQte(Action a){
         return this.mapLignes.get(a).getQte();
+    }
+
+    public LinkedHashMap<Action, LignePortefeuille> getMapLignes() {
+        return mapLignes;
     }
     
 }

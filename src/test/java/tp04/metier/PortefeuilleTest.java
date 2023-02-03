@@ -16,7 +16,10 @@
 package tp04.metier;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Set;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -41,6 +44,15 @@ public class PortefeuilleTest {
             add("BNP");
         }
     };
+    private static final Set<String> EXPECTED_Augemente=new HashSet<String>(){
+        {
+            add("BNP");
+            add("Banque-Assurance");
+        }};
+    private static final Set<String> EXPECTED_Depasser=new HashSet<String>(){
+        {
+            add("BNP");
+        }};
     public PortefeuilleTest() {
     }
 
@@ -63,7 +75,7 @@ public class PortefeuilleTest {
         bqAss.enrgComposition(bnp, 0.7f);
         // enrg. de 2 cours pour chaque action 
         axa.enrgCours(j1, 200);
-        axa.enrgCours(j2, 250);
+        axa.enrgCours(j2, 150);
         bnp.enrgCours(j1, 100);
         bnp.enrgCours(j2, 200);
 
@@ -208,5 +220,20 @@ public class PortefeuilleTest {
         
     }
     
+    @Test
+    void testAugementeList(){
+        Portefeuille p=init();
+        Jour j2 = new Jour(2014, 2);
+        Set<String> result=p.getActionAugemente(j2);
+        Assertions.assertEquals(result,EXPECTED_Augemente);
+    }
+    
+    @Test
+    void testDepasseList(){
+        Portefeuille p=init();
+        Jour j2 = new Jour(2014, 2);
+        Set<String> result=p.getActionDepasser(j2, 190f);
+        Assertions.assertEquals(result,EXPECTED_Depasser);
+    }
     
 }

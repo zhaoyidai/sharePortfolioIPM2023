@@ -14,9 +14,11 @@ import tp04.metier.Portefeuille;
 public class Run {
 
     public static void main(String[] args) {
-        ActionSimple bnp, axa;
+        ActionSimple bnp;
+        ActionSimple axa;
         ActionComposee bqAss;
-        Jour j1, j2;
+        Jour j1;
+        Jour j2;
 
         // init des objets metiers Jour
         j1 = new Jour(2014, 1);
