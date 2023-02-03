@@ -7,12 +7,12 @@ package tp04.metier;
 
 import java.util.ArrayList;
 import java.util.HashSet;
-
-
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.logging.Logger;
+import java.util.logging.Level;
 
 
 /**
@@ -21,7 +21,7 @@ import java.util.Set;
  */
 public class Portefeuille {
     
-
+    private static final Logger LOG = Logger.getLogger(Portefeuille.class.getName());
     List<Action> listeAchete=new ArrayList<>();
     List<Action> listeVente=new ArrayList<>();
 
@@ -88,7 +88,7 @@ public class Portefeuille {
  * Action qui augemente*
 */    
     public Set<String> getActionAugemente(Jour j){
-        System.out.println("Toutes mes actions dont le cours augmente sur le dernier jour");
+        LOG.log(Level.INFO, "Toutes mes actions dont le cours augmente sur le dernier jour");
         Set<String> listAugmente=new HashSet<>();
         int annee=j.getAnnee();
         int ajdj=j.getNoJour();
@@ -97,7 +97,7 @@ public class Portefeuille {
             Jour hier=new Jour(annee,hierj);
             for(Action a:this.mapLignes.keySet()){
 
-                System.out.println(a.getLibelle()+" hier :"+a.valeur(hier)+" ajd :"+a.valeur(j));
+                LOG.log(Level.INFO, "{0} hier :{1} ajd :{2}", new Object[]{a.getLibelle(), a.valeur(hier), a.valeur(j)});
                 if(a.valeur(j)>a.valeur(hier)){
                     
                     listAugmente.add(a.getLibelle());
@@ -106,7 +106,7 @@ public class Portefeuille {
             } 
         }else{
             //On ne sait pas le nb de jour total de l'annee dernier
-            System.out.println("Désolé, Service en maintenance.");
+            LOG.log(Level.INFO, "Désolé, Service en maintenance.");
             
         }
         return listAugmente;
@@ -117,46 +117,43 @@ public class Portefeuille {
         
         Set<String> listDepasse=new HashSet<>();
         
-        
-        
         for(Action a:this.mapLignes.keySet()){
-
-            
             if(a.valeur(j)>c){
-
                 listDepasse.add(a.getLibelle());
             }
-
-        }return listDepasse; 
-        
-        
+        }
+        return listDepasse; 
     }
     
     
     public String toString() {
-        String res = "*----------- Liste des actions avec la quantité associé -----------* \n";
+        StringBuilder bld = new StringBuilder();
+        bld.append("*----------- Liste des actions avec la quantité associé -----------* \n");
         for (Map.Entry<Action,LignePortefeuille> entry: this.mapLignes.entrySet()){
             Action action=entry.getKey();
-            res += "*----------------- Action : ";
-            res += action.getLibelle() + "\n";
-            res += "*-- Quantité : ";
-            res += this.mapLignes.get(action).qte + "\n";
+            bld.append("*----------------- Action : ");
+            bld.append(action.getLibelle() + "\n");
+            bld.append("*-- Quantité : ");
+            bld.append(this.mapLignes.get(action).qte + "\n");
         }
+        String res = bld.toString();
         return res;
     }
     
     public String toStringDetail() {
-        String res = "*----------- Liste des actions avec la quantité associé -----------* \n";
+        StringBuilder bld = new StringBuilder();
+        bld.append("*----------- Liste des actions avec la quantité associé -----------* \n");
         for (Map.Entry<Action,LignePortefeuille> entry: this.mapLignes.entrySet()){
             Action action=entry.getKey();
-            res += "*----------------- Action : ";
-            res += action.getLibelle() + "\n";
-            res += "*-- Quantité : ";
-            res += this.mapLignes.get(action).qte + "\n";
+            bld.append("*----------------- Action : ");
+            bld.append(action.getLibelle() + "\n");
+            bld.append("*-- Quantité : ");
+            bld.append(this.mapLignes.get(action).qte + "\n");
             if ( action instanceof ActionComposee){
-                res += action.toString();
+                bld.append(action.toString());
             } 
         }
+        String res = bld.toString();
         return res;
     }
 
