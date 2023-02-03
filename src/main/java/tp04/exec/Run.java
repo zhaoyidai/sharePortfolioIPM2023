@@ -16,6 +16,7 @@ import java.util.logging.Level;
 public class Run {
 
     private static final Logger LOG = Logger.getLogger(Run.class.getName());
+    private static final String LIB_PORTEFEUILLE = "Portefeuille : {0}";
 
     public static void main(String[] args) {
         ActionSimple bnp;
@@ -47,22 +48,22 @@ public class Run {
         Portefeuille p;
         p = new Portefeuille();
         p.acheter(axa, 10);
-        LOG.log(Level.INFO, "Portefeuille : {0}", p);
+        LOG.log(Level.INFO, LIB_PORTEFEUILLE, p);
         p.acheter(bnp, 20);
-        LOG.log(Level.INFO, "Portefeuille : {0}",  p);
+        LOG.log(Level.INFO, LIB_PORTEFEUILLE,  p);
         p.acheter(bqAss, 5);
-        LOG.log(Level.INFO, "Portefeuille : {0}", p);
+        LOG.log(Level.INFO, LIB_PORTEFEUILLE, p);
         p.acheter(bqAss, 15);
-        LOG.log(Level.INFO, "Portefeuille : {0}", p);
+        LOG.log(Level.INFO, LIB_PORTEFEUILLE, p);
         LOG.log(Level.INFO, "Portefeuille à j1 : {0}", p.valeur(j1));
         p.vendre(axa, 5);
-        LOG.log(Level.INFO, "Portefeuille : {0}", p);
+        LOG.log(Level.INFO, LIB_PORTEFEUILLE, p);
         p.vendre(axa, 5);
-        LOG.log(Level.INFO, "Portefeuille : {0}", p);
+        LOG.log(Level.INFO, LIB_PORTEFEUILLE, p);
         p.vendre(axa, 5);
-        LOG.log(Level.INFO, "Portefeuille : {0}", p);
+        LOG.log(Level.INFO, LIB_PORTEFEUILLE, p);
         p.vendre(bnp, 50);
-        LOG.log(Level.INFO, "Portefeuille : {0}", p);
+        LOG.log(Level.INFO, LIB_PORTEFEUILLE, p);
 
         
         LOG.log(Level.INFO, "Liste acheter : ");

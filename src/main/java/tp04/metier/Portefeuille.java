@@ -136,8 +136,7 @@ public class Portefeuille {
             bld.append("*-- Quantité : ");
             bld.append(this.mapLignes.get(action).qte + "\n");
         }
-        String res = bld.toString();
-        return res;
+        return bld.toString();
     }
     
     public String toStringDetail() {
@@ -153,8 +152,7 @@ public class Portefeuille {
                 bld.append(action.toString());
             } 
         }
-        String res = bld.toString();
-        return res;
+        return bld.toString();
     }
 
     public float valeur(Jour j) {
