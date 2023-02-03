@@ -17,7 +17,6 @@ package tp04.metier;
 
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Set;
 import org.junit.jupiter.api.Assertions;
@@ -27,7 +26,7 @@ import org.junit.jupiter.api.Test;
  *
  * @author zdai2
  */
-public class PortefeuilleTest {
+ class PortefeuilleTest {
     private static final int EXPECTED_NB=2;
     
     private static final List EXPECTED_listAchat=new ArrayList<String>(){

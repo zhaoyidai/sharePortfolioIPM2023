@@ -25,7 +25,7 @@ import static org.junit.jupiter.api.Assertions.*;
  *
  * @author wailbenmansour
  */
-public class ActionComposeeTest {
+class ActionComposeeTest {
     
      private static final Map<ActionSimple, Float> EXPECTED_MAP_AC = new LinkedHashMap<>();
     
