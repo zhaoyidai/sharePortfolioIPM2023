@@ -135,7 +135,8 @@ public class Portefeuille {
     
     public String toString() {
         String res = "*----------- Liste des actions avec la quantité associé -----------* \n";
-        for (Action action: this.mapLignes.keySet()){
+        for (Map.Entry<Action,LignePortefeuille> entry: this.mapLignes.entrySet()){
+            Action action=entry.getKey();
             res += "*----------------- Action : ";
             res += action.getLibelle() + "\n";
             res += "*-- Quantité : ";
@@ -146,7 +147,8 @@ public class Portefeuille {
     
     public String toStringDetail() {
         String res = "*----------- Liste des actions avec la quantité associé -----------* \n";
-        for (Action action: this.mapLignes.keySet()){
+        for (Map.Entry<Action,LignePortefeuille> entry: this.mapLignes.entrySet()){
+            Action action=entry.getKey();
             res += "*----------------- Action : ";
             res += action.getLibelle() + "\n";
             res += "*-- Quantité : ";
@@ -170,7 +172,7 @@ public class Portefeuille {
         
         int annee=j.getAnnee();
         //(Index 0)Haute,(Index 1)Baisse,(Index 2)Inchange
-        List<Integer> listNb=new ArrayList<Integer> ();
+        List<Integer> listNb=new ArrayList<>();
         for(int i=0;i<3;i++){
             listNb.add(0);
         }
