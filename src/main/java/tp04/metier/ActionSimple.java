@@ -48,10 +48,33 @@ public class ActionSimple extends Action {
     
     @Override
     public float valeur(Jour j) {
-        if(this.mapCours.containsKey(j))
-            return this.mapCours.get(j).getValeur();
-        else 
-            return 0; // definition d'une constante possible
+        return mapCours.computeIfAbsent(j, k -> new Cours(k, 0f)).getValeur();
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 71 * hash + Objects.hashCode(this.mapCours);
+        hash = 71 * hash + Objects.hashCode(this.actionComp);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final ActionSimple other = (ActionSimple) obj;
+        if (!Objects.equals(this.mapCours, other.mapCours)) {
+            return false;
+        }
+        return Objects.equals(this.actionComp, other.actionComp);
     }
   
     // encapsulation de la définition de la classe Cours
