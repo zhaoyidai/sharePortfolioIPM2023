@@ -29,6 +29,7 @@ import org.junit.jupiter.api.Test;
  */
 public class PortefeuilleTest {
     private static final int EXPECTED_NB=2;
+    
     private static final List EXPECTED_listAchat=new ArrayList<String>(){
         {
             add("AXA");
@@ -59,6 +60,8 @@ public class PortefeuilleTest {
            add(0);
            add(0);
         }};
+    
+    private static final Float EXPECTED_VALEUR = 25F;
     public PortefeuilleTest() {
     }
 
@@ -210,7 +213,7 @@ public class PortefeuilleTest {
     }
     
     @Test
-    public void testAcheter(){
+    void testAcheter(){
         
         ActionSimple bnp;
         
@@ -226,7 +229,7 @@ public class PortefeuilleTest {
     }
     
     @Test
-    public void testVendre(){
+    void testVendre(){
         
         ActionSimple bnp;
         
@@ -258,6 +261,33 @@ public class PortefeuilleTest {
         Jour j2 = new Jour(2014, 2);
         Set<String> result=p.getActionDepasser(j2, 190f);
         Assertions.assertEquals(EXPECTED_Depasser,result);
+    }
+        
+    void testValeurTotale(){
+        
+        //Création des actions simples 
+        ActionSimple bnp;
+        ActionSimple axa;
+        
+        //Instanciation des actions simples
+        bnp = new ActionSimple("BNP");
+        axa = new ActionSimple("AXA");
+        
+        //Création d'un portefeuille
+        Portefeuille p;
+        
+        //Intanciation d'un portefeuille
+        p = new Portefeuille();
+        
+        //Achat d'actions pour des actions simples
+        p.acheter(bnp, 15);
+        p.acheter(axa, 10);
+        
+        //Méthode qui trouve la valeur totale du nombre d'actions d'un portefeuille
+        final float valeurActuelle = p.valeurTotale();
+        
+        Assertions.assertEquals(EXPECTED_VALEUR,valeurActuelle, "Le nombre d'actions dans le portefeuille sont les mêmes");
+        
     }
     
     @Test
