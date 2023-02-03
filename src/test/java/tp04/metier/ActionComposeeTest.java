@@ -33,7 +33,7 @@ public class ActionComposeeTest {
     }
 
     @Test
-    public void testEqualsEnregistrerActionComposee() {
+    void testEqualsEnregistrerActionComposee() {
         //Attributs à tester
         final Jour j1 = new Jour(2022, 20);
         final float v1 = 15F;
