@@ -41,8 +41,8 @@ public class Run {
         bnp.enrgCours(j1, 100);
         bnp.enrgCours(j2, 200);
         // affichage des cours - comme 1 action simple et 1 action
-        LOG.log(Level.INFO, "Action simple *bnp* à j1 : ", bnp.valeur(j1));
-        LOG.log(Level.INFO, "Action *Banque-Assurance* à j2 : ",  bqAss.valeur(j2));
+        LOG.log(Level.INFO, "Action simple *bnp* à j1 : {0}", bnp.valeur(j1));
+        LOG.log(Level.INFO, "Action *Banque-Assurance* à j2 : {0}",  bqAss.valeur(j2));
 
         Portefeuille p;
         p = new Portefeuille();
