@@ -6,8 +6,9 @@
 
 package tp04.metier;
 
-import java.util.HashMap;
+
 import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.Objects;
 
 /**
@@ -20,13 +21,14 @@ public class ActionComposee extends Action {
 
     public ActionComposee(String libelle) {
         super(libelle);
-        this.actions = new LinkedHashMap();
+        this.actions = new LinkedHashMap<ActionSimple, Float>();
     }
     
     public void enrgComposition(ActionSimple as, float pourcentage) {
         this.actions.put(as, pourcentage);
     }
     
+    @Override
     public String toString() {
         String res = "*-- Détail \n";
         for (Action action: this.actions.keySet()){
@@ -52,9 +54,11 @@ public class ActionComposee extends Action {
 
     @Override
     public int hashCode() {
-        int hash = 7;
+        int hash = 5;
+        hash = 79 * hash + Objects.hashCode(this.actions);
         return hash;
     }
+
 
     @Override
     public boolean equals(Object obj) {
@@ -71,7 +75,7 @@ public class ActionComposee extends Action {
         return Objects.equals(this.actions, other.actions);
     }
 
-    public LinkedHashMap<ActionSimple, Float> getActions() {
+    public Map<ActionSimple, Float> getActions() {
         return actions;
     }
     

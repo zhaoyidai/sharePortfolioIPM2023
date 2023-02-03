@@ -25,7 +25,7 @@ public abstract class Action {
         return libelle;
     }
 
-    public Action(String libelle) {
+    protected Action(String libelle) {
         this.libelle = libelle;
     }
 
@@ -45,10 +45,7 @@ public abstract class Action {
             return false;
         }
         final Action other = (Action) obj;
-        if (!Objects.equals(this.libelle, other.libelle)) {
-            return false;
-        }
-        return true;
+        return Objects.equals(this.libelle, other.libelle);
     }
 
     public String toString() {

@@ -169,11 +169,10 @@ public class Portefeuille {
         
         int annee=j.getAnnee();
         //(Index 0)Haute,(Index 1)Baisse,(Index 2)Inchange
-        List<Integer> listNb=new ArrayList(){{
-        add(0);
-        add(0);
-        add(0);
-        }};
+        List<Integer> listNb=new ArrayList();
+        for(int i=0;i<3;i++){
+            listNb.add(0);
+        }
         int ajdj=j.getNoJour();
         if(ajdj!=1){
             int hierj=ajdj-1;
