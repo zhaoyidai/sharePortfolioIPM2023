@@ -32,14 +32,16 @@ public class ActionComposee extends Action {
     public String toString() {
         StringBuilder bld = new StringBuilder();
         bld.append("*-- Détail \n");
-        for (Action action: this.actions.keySet()){
+        for (Map.Entry<ActionSimple, Float> entry: this.actions.entrySet()){
+            Action action=entry.getKey();
+        
             bld.append("*----------------- Action : ");
             bld.append(action.getLibelle() + "\n");
             bld.append("*------------ Pourcentage : ");
             bld.append(this.actions.get(action) + "\n");
         }
-        String res = bld.toString();
-        return res;
+        
+        return bld.toString();
     }
 
     @Override
@@ -47,7 +49,8 @@ public class ActionComposee extends Action {
         float valeur;
         
         valeur = 0;
-        for(ActionSimple as : this.actions.keySet()) {
+        for (Map.Entry<ActionSimple, Float> entry: this.actions.entrySet()){
+            ActionSimple as=entry.getKey();
             valeur = valeur + (as.valeur(j) * this.actions.get(as));
         }
         

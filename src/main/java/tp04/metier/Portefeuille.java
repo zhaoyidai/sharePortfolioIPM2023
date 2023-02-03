@@ -57,7 +57,7 @@ public class Portefeuille {
     }
     
     public Portefeuille() {
-        this.mapLignes = new LinkedHashMap<Action, LignePortefeuille>();
+        this.mapLignes = new LinkedHashMap<>();
     }
     
     public Map<Action, LignePortefeuille> getActions(){

@@ -76,9 +76,13 @@ public class ActionSimple extends Action {
 
         @Override
         public int hashCode() {
-            int hash = 5;
+            int hash = 7;
+            hash = 37 * hash + Objects.hashCode(this.jour);
+            hash = 37 * hash + Float.floatToIntBits(this.valeur);
             return hash;
         }
+
+        
 
         @Override
         public boolean equals(Object obj) {
