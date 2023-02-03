@@ -26,6 +26,7 @@ import org.junit.jupiter.api.Test;
  */
 public class PortefeuilleTest {
     private static final int EXPECTED_NB=2;
+    
     private static final List EXPECTED_listAchat=new ArrayList<String>(){
         {
             add("AXA");
