@@ -164,6 +164,36 @@ public class Portefeuille {
         }
         return total;
     }
+
+    public List<Integer> getAnalyseNb(Jour j){
+        
+        int annee=j.getAnnee();
+        //(Index 0)Haute,(Index 1)Baisse,(Index 2)Inchange
+        List<Integer> listNb=new ArrayList(){{
+        add(0);
+        add(0);
+        add(0);
+        }};
+        int ajdj=j.getNoJour();
+        if(ajdj!=1){
+            int hierj=ajdj-1;
+            Jour hier=new Jour(annee,hierj);
+            for(Action a:this.mapLignes.keySet()){
+                if(a.valeur(hier)<a.valeur(j)){
+                    listNb.set(0, listNb.get(0)+1);
+                }
+                else if(a.valeur(hier)>a.valeur(j)){
+                    listNb.set(1, listNb.get(1)+1);
+                }
+                else{
+                    listNb.set(2, listNb.get(2)+1);
+                }
+            }
+            return listNb;
+        }
+        return null;
+    }
+
     
     public float valeurTotale() {
         float qteTotal = 0;
@@ -173,6 +203,7 @@ public class Portefeuille {
         return qteTotal;
     }
     
+
     public int getnbActions(){
         return this.mapLignes.size();
     }

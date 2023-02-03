@@ -53,6 +53,12 @@ import org.junit.jupiter.api.Test;
         {
             add("BNP");
         }};
+    private static final ArrayList<Integer> EXPECTED_ANALYSENB=new ArrayList(){
+        {
+           add(2);
+           add(0);
+           add(0);
+        }};
     
     private static final Float EXPECTED_VALEUR = 25F;
     public PortefeuilleTest() {
@@ -245,7 +251,7 @@ import org.junit.jupiter.api.Test;
         Portefeuille p=init();
         Jour j2 = new Jour(2014, 2);
         Set<String> result=p.getActionAugemente(j2);
-        Assertions.assertEquals(result,EXPECTED_Augemente);
+        Assertions.assertEquals(EXPECTED_Augemente,result);
     }
     
     @Test
@@ -253,7 +259,7 @@ import org.junit.jupiter.api.Test;
         Portefeuille p=init();
         Jour j2 = new Jour(2014, 2);
         Set<String> result=p.getActionDepasser(j2, 190f);
-        Assertions.assertEquals(result,EXPECTED_Depasser);
+        Assertions.assertEquals(EXPECTED_Depasser,result);
     }
         
     void testValeurTotale(){
@@ -282,5 +288,13 @@ import org.junit.jupiter.api.Test;
         Assertions.assertEquals(EXPECTED_VALEUR,valeurActuelle, "Le nombre d'actions dans le portefeuille sont les mêmes");
         
     }
+    
+    @Test
+    void testAnalyseNbAction(){
+        Portefeuille p=init();
+        Jour j2 = new Jour(2014, 2);
+        Assertions.assertEquals(EXPECTED_ANALYSENB,p.getAnalyseNb(j2));
+    }
+    
     
 }
