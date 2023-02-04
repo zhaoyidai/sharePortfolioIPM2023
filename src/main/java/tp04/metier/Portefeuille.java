@@ -5,7 +5,7 @@
  */
 package tp04.metier;
 
-import java.text.DecimalFormat;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
@@ -202,7 +202,7 @@ public class Portefeuille {
     }
     
     public float arrondirRendement(float rendement) {
-        return (float) (Math.round(rendement * 100f) / 100f);
+        return (Math.round(rendement * 100f) / 100f);
     }
 
     
